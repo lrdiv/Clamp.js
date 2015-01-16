@@ -118,7 +118,7 @@
                 return getLastChild(Array.prototype.slice.call(elem.children).pop());
             }
             //This is the absolute last child, a text node, but something's wrong with it. Remove it and keep trying
-            else if (!elem.lastChild || !elem.lastChild.nodeValue || elem.lastChild.nodeValue == '' || elem.lastChild.nodeValue == opt.truncationChar) {
+            else if (elem.lastChild && (!elem.lastChild || !elem.lastChild.nodeValue || elem.lastChild.nodeValue == '' || elem.lastChild.nodeValue == opt.truncationChar)) {
                 elem.lastChild.parentNode.removeChild(elem.lastChild);
                 return getLastChild(element);
             }
